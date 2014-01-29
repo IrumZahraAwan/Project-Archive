@@ -1,6 +1,5 @@
 html, body {
       background-color: #101010;
-      font-family: "Monospace";
       font-weight: normal;
       margin-left: 7%;
       height: 95%;
@@ -10,21 +9,12 @@ html, body {
       color: #999999;
       font-weight: normal;
     }
-    a:hover {
-      text-decoration: underline;
-      color: #960050;
-      font-weight: normal;
-    }
     table {
-      font-size: 12pt;
+      font-size: 10pt;
       border-spacing: 8px;
     }
     td {
       vertical-align: middle;
-    }
-    td:first-child {
-      font-weight: bold;
-      color: #960050;
     }
     td:nth-child(2) {
       font-weight: normal;
@@ -32,4 +22,17 @@ html, body {
     }
     .red {
       color: #960050;
+    }
+    a:hover {
+      text-decoration: underline;
+      font-weight: normal;
+      /*HERE*/
+      color: #960050;
+      /*REST*/
+    }
+    td:first-child {
+      font-weight: bold;
+      /*HERE*/
+      color: #960050;
+      /*REST*/
     }

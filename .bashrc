@@ -8,20 +8,31 @@
 #export PATH=\$PATH:~/.xmonad/bin
 export EDITOR=vim
 
-
-# colors
-BLACK="\[\033[1;30m\]"    # black
-RED="\[\033[1;31m\]"    # red
-GREEN="\[\033[1;32m\]"    # green
-YELLOW="\[\033[1;33m\]"    # yellow
-BLUE="\[\033[1;34m\]"    # blue
-MAGENTA="\[\033[1;35m\]"    # magenta
-CYAN="\[\033[1;36m\]"    # cyan
-WHITE="\[\033[1;37m\]"    # white
-OFF="\[\033[0m\]"
 UNDER="\[\033[1;4m\]"    # white
 FLASH="\[\033[1;5m\]"    # white
 ANTI="\[\033[1;7m\]"    # white
+
+
+
+blue="\033[0;34m"
+lblue="\033[1;34m"
+green="\033[0;32m"
+lgreen="\033[1;32m"
+cyan="\033[0;36m"
+lcyan="\033[1;36m"
+red="\033[0;31m"
+lred="\033[1;31m"
+purple="\033[0;35m"
+lpurple="\033[1;35m"
+orange="\033[0;33m"
+lorange="\033[1;33m"
+black="\033[0;30m"
+white="\033[1;37m"
+gray="\033[1;30m"
+lgray="\033[0;37m"
+noc="\033[0;0m"
+
+
 
 EXITSTATUS="$?"
 BOLD="\[\033[1m\]"
@@ -37,9 +48,9 @@ BGC="\[\033[46m\]"
 BGW="\[\033[47m\]"
 
 function lines {
-  echo  "\033[1;31m"
+  echo -e "${red}"
   eval printf %.0s- '{1..'"${COLUMNS:-$(tput cols)}"\}; echo
-  echo  "\033[0m"
+  echo -e "${noc}"
 }
 
 function exitstatus {
@@ -60,7 +71,7 @@ function exitstatus {
 #PS1="$(lines) ${RED}>>${OFF} "
 
 #smiley () { echo -e ":\\$(($??50:51))"; }
-export PS1=" \h \e${BLACK}\w\e\n\n${RED} >>${OFF} "
+export PS1=" \h \e${red}\w\e\n\n${green} >>${noc} "
 
 trap 'echo -e "\n$(lines)\n"' DEBUG
 

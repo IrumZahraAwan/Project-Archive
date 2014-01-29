@@ -1,0 +1,44 @@
+/* FILE-NAME: ~/.mozilla/firefox/*.default/chrome/userChrome.css */
+
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"); /* Required? */
+
+/* I hide the close button. You can do this in about:config, too.*/
+.tab-close-button *{display: none !important;}
+
+/* I make the tabs shorter*/
+tab { max-width: 50px !important;}
+
+/* I make the tabs thinner */
+#TabsToolbar { height: 20px !important; }
+
+/* I remove the tab icons */
+.tabbrowser-tabs .tab-icon-image { display: none !important; }
+
+/* I don't use the bookmark bar, but this remove the icons there, too */
+#personal-bookmarks .toolbarbutton-icon { display: none !important; }
+
+
+
+
+/* Tab styling - the HERE/REST comments are so that I can change it automatically*/
+#TabsToolbar {background: #101010 !important}
+.tabbrowser-tab:not([selected="true"]) {
+  background: #101010 !important;
+  font-size: 12px !important;
+  color: #fafafa !important;
+  font-weight: normal !important;
+  border: none !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important
+}
+
+.tabbrowser-tab[selected="true"] {
+  background: #101010 !important;
+  font-size: 12px !important;
+  border: none !important;
+  padding-left: 5px !important;
+  padding-right: 5px !important;
+  /*HERE*/
+  color: #ff0000 !important;
+  /*REST*/
+}
