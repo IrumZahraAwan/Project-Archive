@@ -56,3 +56,7 @@ Based on many other configs I have seen on the internet.
 
 
 ![alt text](http://i.imgur.com/JgA8Th9.png)
+
+Using the same colour themes, with different fg/bg colours:
+
+![alt text](http://i.imgur.com/FmwfVi5.png)

@@ -1,5 +1,7 @@
 html, body {
-      background-color: #101010;
+      /*HERE*/
+background-color: #101010;
+/*REST*/
       font-weight: normal;
       margin-left: 7%;
       height: 95%;
@@ -27,12 +29,12 @@ html, body {
       text-decoration: underline;
       font-weight: normal;
       /*HERE*/
-color: #66ff66;
+color: #F92672;
 /*REST*/
     }
     td:first-child {
       font-weight: bold;
       /*HERE*/
-color: #66ff66;
+color: #F92672;
 /*REST*/
     }

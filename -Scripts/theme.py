@@ -1,8 +1,13 @@
 HOME = '/home/arch'
 import os, sys, colorsys
 
-color1=sys.argv[1]
-color2=sys.argv[2]
+from themes.thayes import *
+
+#color1=sys.argv[1]
+#color2=sys.argv[2]
+
+colorb=eval(colorbl)
+colorf=eval(colorfl)
 
 if color1=='-h':
     print('Usage:\n\t\tpython abcdef\n\nwhere #abcdef is the hex-value of the desired color.')
@@ -32,46 +37,47 @@ def inverse(rgb):
 
 # ------- XTerm -------------------------------------------------
 
+
 xterm = ('\
 \
-XTerm*Background: #1f1f1f\n\
-XTerm*Foreground: white\n\
+XTerm*Background: #%s\n\
+XTerm*Foreground: #%s\n\
 XTerm*font: 6x10\n\
 XTerm*saveLines: 100000\n\
-XTerm*HiForeColor: white\n\
-XTerm*HiBackColor: #c06077\n\
+XTerm*HiBackColor: #%s\n\
+XTerm*HiForeColor: #%s\n\
 XTerm*geometry: +50+100\n\
 XTerm*allowBoldFonts: false\n\
-*xterm*background: #101010\n\
-*xterm*foreground: #d0d0d0\n\
-*xterm*cursorColor: #d0d0d\n\
-
+*xterm*background: #%s\n\
+*xterm*foreground: #%s\n\
+*xterm*cursorColor: #%s\n\
+\
 ! Black\n\
-*xterm*color0: #101010\n\
-*xterm*color8: #303030\n\
+*xterm*color0: #%s\n\
+*xterm*color8: #%s\n\
 ! Red\n\
 *xterm*color1: #%s\n\
-*xterm*color9: #ff0090\n\
+*xterm*color9: #%s\n\
 ! Green\n\
 *xterm*color2: #%s\n\
-*xterm*color10: #80ff00\n\
+*xterm*color10: #%s\n\
 ! Yellow\n\
-*xterm*color3: #c47f2c\n\
-*xterm*color11: #ffba68\n\
+*xterm*color3: #%s\n\
+*xterm*color11: #%s\n\
 ! Blue\n\
-*xterm*color4: #30309b\n\
-*xterm*color12: #5f5fee\n\
+*xterm*color4: #%s\n\
+*xterm*color12: #%s\n\
 ! Magenta\n\
-*xterm*color5: #7e40a5\n\
-*xterm*color13: #bb88dd\n\
+*xterm*color5: #%s\n\
+*xterm*color13: #%s\n\
 ! Cyan\n\
-*xterm*color6: #3579a8\n\
-*xterm*color14: #4eb4fa\n\
+*xterm*color6: #%s\n\
+*xterm*color14: #%s\n\
 ! White\n\
-*xterm*color7: #9999aa\n\
-*xterm*color15: #d0d0d0\
+*xterm*color7: #%s\n\
+*xterm*color15: #%s\
 \
-' %(color1, color2)) 
+' %(background, foreground, background, foreground, background, foreground, foreground, color0, color8, color1, color9, color2, color10, color3, color11, color4, color12, color5, color13, color6, color14, color7, color15)) 
 
 with open(HOME+'/XTerm', 'w+') as f:
     f.write(xterm)
@@ -80,45 +86,47 @@ with open(HOME+'/XTerm', 'w+') as f:
 # ------- XMonad ------------------------------------------------
 
 insert = ('\
-colorf = "#d0d0d0"\n\
-colorb = "#101010"\n\
+--HERE\n\
+colorf = "#%s"\n\
+colorb = "#%s"\n\
 -- Black\n\
-color0 = "#d0d0d0"\n\
-color8 = "#303030"\n\
+color0 = "#%s"\n\
+color8 = "#%s"\n\
 -- Red\n\
 color1 = "#%s"\n\
-color9 = "#ff0090"\n\
+color9 = "#%s"\n\
 -- Green\n\
 color2 = "#%s"\n\
-color10 = "#80ff00"\n\
+color10 = "#%s"\n\
 -- Yellow\n\
-color3 = "#c47f2c"\n\
-color11 = "#ffba68"\n\
+color3 = "#%s"\n\
+color11 = "#%s"\n\
 -- Blue\n\
-color4 = "#30309b"\n\
-color12 = "#5f5fee"\n\
+color4 = "#%s"\n\
+color12 = "#%s"\n\
 -- Magenta\n\
-color5 = "#7e40a5"\n\
-color13 = "#bb88dd"\n\
+color5 = "#%s"\n\
+color13 = "#%s"\n\
 -- Cyan\n\
-color6 = "#3579a8"\n\
-color14 = "#4eb4fa"\n\
+color6 = "#%s"\n\
+color14 = "#%s"\n\
 -- White\n\
-color7 = "#9999aa"\n\
-color15 = "#d0d0d0"\n\
+color7 = "#%s"\n\
+color15 = "#%s"\n\
 -- Red\n\
-colorfg=color2\n\
-colorbg=color1\n\
+colorfg="#%s"\n\
+colorbg="#%s"\n\
+--REST\n\
 \
-')
+' %(foreground, background, color0, color8, color1, color9, color2, color10, color3, color11, color4, color12, color5, color13, color6, color14, color7, color15, colorf, colorb)) 
 
-insert = ('-- HERE\ncolor1 = "#%s"\ncolor2 = "#%s"\n-- DONE' %(color1, color2))
+#insert = ('--HERE\ncolor1 = "#%s"\ncolor2 = "#%s"\n--REST' %(color1, color2))
 
 with open (HOME + '/.xmonad/xmonad.hs', 'r') as f:
     hl = f.read()
 
-start = hl[:hl.find('-- HERE')]
-rest = hl[hl.find('-- DONE')+7:]
+start = hl[:hl.find('--HERE')]
+rest = hl[hl.find('--REST')+7:]
 
 
 with open (HOME + '/.xmonad/xmonad.hs', 'w') as f:
@@ -128,7 +136,7 @@ with open (HOME + '/.xmonad/xmonad.hs', 'w') as f:
 
 # ------- XMobar ------------------------------------------------
 
-insert = ('"-h","#%s","-l","#%s"' %(color1, color2))
+insert = ('"-h","#%s","-l","#%s"' %(colorb, colorf))
 
 with open (HOME + '/.xmonad/xmobar.hs', 'r') as f:
     hl = f.read()
@@ -143,21 +151,28 @@ with open (HOME + '/.xmonad/xmobar.hs', 'w') as f:
 
 # ------- Homepage -----------------------------------------------
 
-insert = ('/*HERE*/\ncolor: #%s;\n/*REST*/' %(color2))
 
 with open(HOME + '/html/style.css', 'r') as f: 
     css = f.read()
 
 
+inserta = ('/*HERE*/\nbackground-color: #%s;\n/*REST*/' %(background))
 
-start = css[:css.find('/*HERE*/')]
-rest = css[css.find('/*REST*/')+8:]
+starta = css[:css.find('/*HERE*/')]
+resta = css[css.find('/*REST*/')+8:]
+
+insert = ('/*HERE*/\ncolor: #%s;\n/*REST*/' %(colorf))
+
+start = resta[:resta.find('/*HERE*/')]
+rest = resta[resta.find('/*REST*/')+8:]
 
 reststart = rest[:rest.find('/*HERE*/')]
 restrest = rest[rest.find('/*REST*/')+8:]
 
 
 with open(HOME + '/html/style.css', 'w') as f: 
+    f.write(starta)
+    f.write(inserta)
     f.write(start)
     f.write(insert)
     f.write(reststart)
@@ -167,14 +182,18 @@ with open(HOME + '/html/style.css', 'w') as f:
 
 # ------- Firefox -----------------------------------------------
 
-insert = ('/*HERE*/\ncolor:#%s !important;\n/*REST*/' %(color2))
+insert = ('/*HERE*/\ncolor:#%s !important;\n/*REST*/' %(colorf))
 
 with open(HOME + '/.mozilla/firefox/irr3wx17.default/chrome/userChrome.css', 'r') as f: 
     css = f.read()
 
+reinsert=('background: #%s !important;' %background)
+
+css = re.sub('background: #...... !important;',reinsert,css) 
 
 start = css[:css.find('/*HERE*/')]
 rest = css[css.find('/*REST*/')+8:]
+
 
 
 with open(HOME + '/.mozilla/firefox/irr3wx17.default/chrome/userChrome.css', 'w') as f: 
@@ -183,9 +202,27 @@ with open(HOME + '/.mozilla/firefox/irr3wx17.default/chrome/userChrome.css', 'w'
     f.write(rest)
 
 
+# ------- bashrc ------------------------------------------------
+
+insert = ('#HERE/\ncolorf=${%s}\ncolorb=${%s}\n#REST' %(colorfl, colorbl))
+
+with open(HOME + '/.bashrc', 'r') as f: 
+    text = f.read()
+
+
+start = text[:text.find('#HERE')]
+rest = text[text.find('#REST')+8:]
+
+
+with open(HOME + '/.bashrc', 'w') as f: 
+    f.write(start)
+    f.write(insert)
+    f.write(rest)
+
+
 # ------- Background --------------------------------------------
 
-os.system('convert -size 100x100 xc:#%s ~/.xmonad/wallpaper.png'%color1)
+os.system('convert -size 100x100 xc:#%s ~/.xmonad/wallpaper.png'%colorb)
 
 
 
