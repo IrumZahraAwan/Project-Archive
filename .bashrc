@@ -48,7 +48,7 @@ BGC="\[\033[46m\]"
 BGW="\[\033[47m\]"
 
 function lines {
-  echo -e "${red}"
+  echo -e "${green}"
   eval printf %.0s- '{1..'"${COLUMNS:-$(tput cols)}"\}; echo
   echo -e "${noc}"
 }
@@ -71,7 +71,7 @@ function exitstatus {
 #PS1="$(lines) ${RED}>>${OFF} "
 
 #smiley () { echo -e ":\\$(($??50:51))"; }
-export PS1=" \h \e${red}\w\e\n\n${green} >>${noc} "
+export PS1=" \h \e${green}\w\e\n\n${green} >>${noc} "
 
 trap 'echo -e "\n$(lines)\n"' DEBUG
 

@@ -27,12 +27,12 @@ html, body {
       text-decoration: underline;
       font-weight: normal;
       /*HERE*/
-      color: #960050;
-      /*REST*/
+color: #66ff66;
+/*REST*/
     }
     td:first-child {
       font-weight: bold;
       /*HERE*/
-      color: #960050;
-      /*REST*/
+color: #66ff66;
+/*REST*/
     }
