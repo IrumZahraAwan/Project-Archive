@@ -9,4 +9,4 @@ WM: xmonad
 DE: None
 
 
-[!alt text](http://i.imgur.com/JgA8Th9.png)
+![alt text](http://i.imgur.com/JgA8Th9.png)
