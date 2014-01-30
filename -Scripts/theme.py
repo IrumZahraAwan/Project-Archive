@@ -127,7 +127,7 @@ with open (HOME + '/.xmonad/xmonad.hs', 'r') as f:
     hl = f.read()
 
 
-hl = re.sub("dmenu_run -nf '#......' -nb '#......' -sf '#......' -sb '#......'", "dmenu_run -nf '#%s' -nb '#%s' -sf '#%s' -sb '#%s' "%(foreground,background,colorf, background),ls)
+hl = re.sub("dmenu_run -nf '#......' -nb '#......' -sf '#......' -sb '#......'", "dmenu_run -nf '#%s' -nb '#%s' -sf '#%s' -sb '#%s' "%(foreground,background,background,colorf),hl)
 
 
 start = hl[:hl.find('--HERE')]
@@ -148,6 +148,8 @@ with open (HOME + '/.xmonad/xmobar.hs', 'r') as f:
 
 
 hl = re.sub('"-h","#......","-l","#......"',insert,hl) 
+hl = re.sub('bgColor = "#......",','bgColor = "#%s",'%background,hl)
+hl = re.sub('fgColor = "#......",','fgColor = "#%s",'%foreground,hl)
 
 with open (HOME + '/.xmonad/xmobar.hs', 'w') as f:
     f.write(hl)

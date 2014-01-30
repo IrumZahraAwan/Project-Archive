@@ -59,7 +59,7 @@ color14 = "#66fff2"
 color7 = "#f5f2df"
 color15 = "#FFFFFF"
 -- Red
-colorfg="#f5f2df"
+colorfg="#3a9495"
 colorbg="#f5f2df"
 --REST
 
@@ -147,9 +147,9 @@ myFocusedBorderColor = colorfg
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = defaultTheme {
-    activeBorderColor = colorbg,
-    activeTextColor = colorf,
-    activeColor = "#000000",
+    activeBorderColor = colorb,
+    activeTextColor = colorfg,
+    activeColor = colorb,
     inactiveBorderColor = color8,
     inactiveTextColor = colorf,
     inactiveColor = "#000000"
@@ -191,7 +191,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "dmenu_run -nf '#ffffff' -nb '#ffffff' -sf '#ffffff' -sb '#ffffff' ")
+     spawn "dmenu_run -nf '#f5f2df' -nb '#0b0d22' -sf '#0b0d22' -sb '#3a9495'        ")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
