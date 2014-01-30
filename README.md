@@ -64,4 +64,4 @@ Using the same colour themes, with different fg/bg colours:
 
 A colour theme by user mahatman:
 
-![alt text](http://i.imgur.com/sP137bb)
+![alt text](http://i.imgur.com/sP137bb.png)
