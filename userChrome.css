@@ -21,9 +21,11 @@ tab { max-width: 50px !important;}
 
 
 /* Tab styling - the HERE/REST comments are so that I can change it automatically*/
-#TabsToolbar {background: #101010 !important}
+#TabsToolbar {
+background: #0b0d22 !important;
+}
 .tabbrowser-tab:not([selected="true"]) {
-  background: #101010 !important;
+  background: #0b0d22 !important;
   font-size: 12px !important;
   color: #fafafa !important;
   font-weight: normal !important;
@@ -33,12 +35,12 @@ tab { max-width: 50px !important;}
 }
 
 .tabbrowser-tab[selected="true"] {
-  background: #101010 !important;
+  background: #0b0d22 !important;
   font-size: 12px !important;
   border: none !important;
   padding-left: 5px !important;
   padding-right: 5px !important;
   /*HERE*/
-  color: #ff0000 !important;
-  /*REST*/
+color:#f5f2df !important;
+/*REST*/
 }

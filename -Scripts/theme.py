@@ -1,7 +1,8 @@
 HOME = '/home/arch'
 import os, sys, colorsys
+import re
 
-from themes.thayes import *
+from themes.mahat import *
 
 #color1=sys.argv[1]
 #color2=sys.argv[2]
@@ -125,6 +126,10 @@ colorbg="#%s"\n\
 with open (HOME + '/.xmonad/xmonad.hs', 'r') as f:
     hl = f.read()
 
+
+hl = re.sub("dmenu_run -nf '#......' -nb '#......' -sf '#......' -sb '#......'", "dmenu_run -nf '#%s' -nb '#%s' -sf '#%s' -sb '#%s' "%(foreground,background,colorf, background),ls)
+
+
 start = hl[:hl.find('--HERE')]
 rest = hl[hl.find('--REST')+7:]
 
@@ -141,7 +146,6 @@ insert = ('"-h","#%s","-l","#%s"' %(colorb, colorf))
 with open (HOME + '/.xmonad/xmobar.hs', 'r') as f:
     hl = f.read()
 
-import re
 
 hl = re.sub('"-h","#......","-l","#......"',insert,hl) 
 
@@ -220,11 +224,23 @@ with open(HOME + '/.bashrc', 'w') as f:
     f.write(rest)
 
 
+
+# ------- Archey3 -----------------------------------------------
+
+colors=['black','red','green','yellow','blue','magenta','cyan','white']
+
+
+with open (HOME + '/.archey3.cfg', 'r') as f:
+    txt = f.read()
+print(colors[int(colorfl[5:])%8])
+txt = re.sub('color = .*','color = %s'%(colors[int(colorfl[5:])%8]),txt) 
+
+with open (HOME + '/.archey3.cfg', 'w') as f:
+    f.write(txt)
+
 # ------- Background --------------------------------------------
 
 os.system('convert -size 100x100 xc:#%s ~/.xmonad/wallpaper.png'%colorb)
-
-
 
 
 # ------- Apply changes -----------------------------------------
@@ -233,7 +249,7 @@ os.system('cd ~/.xmonad; ghc -threaded xmonad.hs; mv xmonad xmonad-x86_64-linux;
 os.system('feh --bg-fill ~/.xmonad/wallpaper.png')
 
 os.system('killall firefox-aurora')
-os.system('xterm -hold -e tty-clock -cs &')
+os.system('xterm -hold -e tty-clock -cs -C %s&' %(int(colorfl[5:])%8))
 os.system('xterm -hold -e ~/-Scripts/colors.sh &')
 os.system('xterm -hold -e archey3 &')
 os.system('firefox-aurora &')

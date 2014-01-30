@@ -1,4 +1,5 @@
 
+
 import System.IO
 import System.Exit
 import XMonad
@@ -24,32 +25,43 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
 import qualified XMonad.StackSet as W
-import qualified Data.Map        as M
+import qualified Data.Map as M
 
 
 -------COLOURS----------------------------------------------------------
--- Colours - At the start so that I can easily change them with scripts.
+-- Colours - here/done commments are so that I can easily change them with scripts.
 -- (monokai theme)
--- HERE
-color1 = "#00cc00"
-color2 = "#ff0000"
--- DONE
-colorf = "#d0d0d0"
-colorb = "#101010"
-color0 = "#d0d0d0"
-color3 = "#c47f2c"
-color4 = "#30309b"
-color5 = "#7e40a5" 
-color6 = "#3579a8"
-color7 = "#9999aa"
-color8 = "#303030"
-color9 = "#ff0090"
-color10 = "#80ff00"
-color11 = "#ffba68"
-color12 = "#5f5fee"
-color13 = "#bb88dd"
-color14 = "#4eb4fa"
-color15 = "#d0d0d0"
+--HERE
+colorf = "#f5f2df"
+colorb = "#0b0d22"
+-- Black
+color0 = "#0b0d22"
+color8 = "#252525"
+-- Red
+color1 = "#eb0c4f"
+color9 = "#ff4262"
+-- Green
+color2 = "#97bf5f"
+color10 = "#b1e06f"
+-- Yellow
+color3 = "#cccc3d"
+color11 = "#ebe200"
+-- Blue
+color4 = "#3a9495"
+color12 = "#0adcdd"
+-- Magenta
+color5 = "#850cd5"
+color13 = "#d900ff"
+-- Cyan
+color6 = "#7accc5"
+color14 = "#66fff2"
+-- White
+color7 = "#f5f2df"
+color15 = "#FFFFFF"
+-- Red
+colorfg="#f5f2df"
+colorbg="#f5f2df"
+--REST
 
 
 ------------------------------------------------------------------------
@@ -82,18 +94,18 @@ myWorkspaces = ["1:term","2:web","3:code","4:vm","5:media"] ++ map show [6..9]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "firefox-aurora"       --> doShift "2:web"
-    , className =? "Google-chrome"  --> doShift "2:web"
-    , resource  =? "desktop_window" --> doIgnore
-    , className =? "Galculator"     --> doFloat
-    , className =? "Steam"          --> doFloat
-    , className =? "Gimp"           --> doFloat
-    , resource  =? "gpicview"       --> doFloat
-    , resource  =? "dmenu"       --> doFloat
-    , className =? "MPlayer"        --> doFloat
-    , className =? "VirtualBox"     --> doShift "4:vm"
-    , className =? "Xchat"          --> doShift "5:media"
-    , className =? "stalonetray"    --> doIgnore
+    [ className =? "firefox-aurora" --> doShift "2:web"
+    , className =? "Google-chrome" --> doShift "2:web"
+    , resource =? "desktop_window" --> doIgnore
+    , className =? "Galculator" --> doFloat
+    , className =? "Steam" --> doFloat
+    , className =? "Gimp" --> doFloat
+    , resource =? "gpicview" --> doFloat
+    , resource =? "dmenu" --> doFloat
+    , className =? "MPlayer" --> doFloat
+    , className =? "VirtualBox" --> doShift "4:vm"
+    , className =? "Xchat" --> doShift "5:media"
+    , className =? "stalonetray" --> doIgnore
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
 
 
@@ -104,7 +116,7 @@ myManageHook = composeAll
 -- restarting (with 'mod-q') to reset your layout state to the new
 -- defaults, as xmonad preserves your old layout settings by default.
 --
--- The available layouts.  Note that each layout is separated by |||,
+-- The available layouts. Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
 
@@ -116,13 +128,13 @@ myLayout = avoidStruts (
     Full |||
     spiral (6/7)) |||
     noBorders (fullscreenFull Full)
-  where 
-    tiled = spacing 10 $ ResizableTall nmaster delta ratio []
+  where
+    tiled = spacing 20 $ ResizableTall nmaster delta ratio []
     nmaster = 1
-    --         -- Percent of the screen to increment when resizing
-    delta   = 5/100
-    --                 -- Default proportion of the screen taken up by main pane
-    ratio   = toRational (2/(1 + sqrt 5 :: Double))
+    -- -- Percent of the screen to increment when resizing
+    delta = 5/100
+    -- -- Default proportion of the screen taken up by main pane
+    ratio = toRational (2/(1 + sqrt 5 :: Double))
     --
 
 
@@ -130,12 +142,12 @@ myLayout = avoidStruts (
 -- Colors and borders
 -- Currently based on the ir_black theme.
 --
-myNormalBorderColor  = colorb
-myFocusedBorderColor = color2
+myNormalBorderColor = colorb
+myFocusedBorderColor = colorfg
 
 -- Colors for text and backgrounds of each tab when in "Tabbed" layout.
 tabConfig = defaultTheme {
-    activeBorderColor = color1,
+    activeBorderColor = colorbg,
     activeTextColor = colorf,
     activeColor = "#000000",
     inactiveBorderColor = color8,
@@ -144,10 +156,10 @@ tabConfig = defaultTheme {
 }
 
 -- Color of current window title in xmobar.
-xmobarTitleColor = color1
+xmobarTitleColor = colorfg
 
 -- Color of current workspace in xmobar.
-xmobarCurrentWorkspaceColor = color2
+xmobarCurrentWorkspaceColor = colorfg
 
 -- Width of the window border in pixels.
 myBorderWidth = 5
@@ -157,7 +169,7 @@ myBorderWidth = 5
 -- Key bindings
 --
 -- modMask lets you specify which modkey you want to use. The default
--- is mod1Mask ("left alt").  You may also consider using mod3Mask
+-- is mod1Mask ("left alt"). You may also consider using mod3Mask
 -- ("right alt"), which does not conflict with emacs keybindings. The
 -- "windows key" is usually mod4Mask.
 --
@@ -168,7 +180,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Custom key bindings
   --
 
-  -- Start a terminal.  Terminal to start is specified by myTerminal variable.
+  -- Start a terminal. Terminal to start is specified by myTerminal variable.
   [ ((modMask .|. shiftMask, xK_Return),
      spawn $ XMonad.terminal conf)
 
@@ -179,7 +191,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu via yeganesh.
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "dmenu_run")
+     spawn "dmenu_run -nf '#ffffff' -nb '#ffffff' -sf '#ffffff' -sb '#ffffff' ")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
@@ -237,7 +249,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_space),
      sendMessage NextLayout)
 
-  --  Reset the layouts on the current workspace to default.
+  -- Reset the layouts on the current workspace to default.
   , ((modMask .|. shiftMask, xK_space),
      setLayout $ XMonad.layoutHook conf)
 
@@ -255,11 +267,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Move focus to the previous window.
   , ((modMask, xK_k),
-     windows W.focusUp  )
+     windows W.focusUp )
 
   -- Move focus to the master window.
   , ((modMask, xK_m),
-     windows W.focusMaster  )
+     windows W.focusMaster )
 
   -- Swap the focused window and the master window.
   , ((modMask, xK_Return),
@@ -267,11 +279,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- Swap the focused window with the next window.
   , ((modMask .|. shiftMask, xK_j),
-     windows W.swapDown  )
+     windows W.swapDown )
 
   -- Swap the focused window with the previous window.
   , ((modMask .|. shiftMask, xK_k),
-     windows W.swapUp    )
+     windows W.swapUp )
 
   -- Shrink the master area.
   , ((modMask, xK_h),
@@ -305,7 +317,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- restart "xmonad" True)
 
 
-	,((mod1Mask			, xK_q), spawn "killall xmobar; killall dmenu; cd ~/.xmonad; ghc -threaded xmonad.hs; cp xmonad xmonad-x86_64-linux; xmonad --restart" )
+        ,((mod1Mask                        , xK_q), spawn "killall xmobar; killall dmenu; cd ~/.xmonad; ghc -threaded xmonad.hs; cp xmonad xmonad-x86_64-linux; xmonad --restart" )
 
   ]
   ++
@@ -364,7 +376,7 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 ------------------------------------------------------------------------
 -- Startup hook
 -- Perform an arbitrary action each time xmonad starts or is restarted
--- with mod-q.  Used by, e.g., XMonad.Layout.PerWorkspace to initialize
+-- with mod-q. Used by, e.g., XMonad.Layout.PerWorkspace to initialize
 -- per-workspace layout choices.
 --
 -- By default, do nothing.
@@ -381,7 +393,7 @@ main = do
             ppOutput = hPutStrLn xmproc
           , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
           , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          , ppSep = "   "
+          , ppSep = " "
       }
       , manageHook = manageDocks <+> myManageHook
       , startupHook = setWMName "LG3D"
@@ -399,20 +411,20 @@ main = do
 --
 defaults = defaultConfig {
     -- simple stuff
-    terminal           = myTerminal,
-    focusFollowsMouse  = myFocusFollowsMouse,
-    borderWidth        = myBorderWidth,
-    modMask            = myModMask,
-    workspaces         = myWorkspaces,
-    normalBorderColor  = myNormalBorderColor,
+    terminal = myTerminal,
+    focusFollowsMouse = myFocusFollowsMouse,
+    borderWidth = myBorderWidth,
+    modMask = myModMask,
+    workspaces = myWorkspaces,
+    normalBorderColor = myNormalBorderColor,
     focusedBorderColor = myFocusedBorderColor,
 
     -- key bindings
-    keys               = myKeys,
-    mouseBindings      = myMouseBindings,
+    keys = myKeys,
+    mouseBindings = myMouseBindings,
 
     -- hooks, layouts
-    layoutHook         = smartBorders $ myLayout,
-    manageHook         = myManageHook,
-    startupHook        = myStartupHook
+    layoutHook = smartBorders $ myLayout,
+    manageHook = myManageHook,
+    startupHook = myStartupHook
 }

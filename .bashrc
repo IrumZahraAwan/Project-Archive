@@ -40,10 +40,9 @@ color15="\033[0;37m"
 noc="\033[0;0m"
 
 #HERE/
-colorf=${color1}
-colorb=${color2}
-#REST033[40m"
-BGR="\033[41m"
+colorf=${color7}
+colorb=${color7}
+#REST033[41m"
 BGG="\033[42m"
 BGY="\033[43m"
 BGB="\033[44m"
