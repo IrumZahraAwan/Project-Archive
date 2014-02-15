@@ -1,4 +1,4 @@
-Pyrecognize
+![alt tag](http://wiki.winehq.org/wiki/winehq/img/PythonPowered.png)    Pyrecognize 
 ===========
 
 Face recognition using OpenCV and Python.
@@ -35,6 +35,7 @@ To recognize faces:
 facerec.py
 ```
 
+Press Esc to exit.
 
 Installation
 ------------
