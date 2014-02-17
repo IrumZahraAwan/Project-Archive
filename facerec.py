@@ -12,19 +12,20 @@ def trainFisher():
  names = {}
  colours={}
  id=0
- for subdirs, dirs, files in os.walk(fn_dir):
-  for subdir in dirs:
-   names[id]=subdir
-   colours[id]=(random.randrange(256),random.randrange(256),random.randrange(256))
-   subjectpath=os.path.join(fn_dir, subdir)
-   for filename in os.listdir(subjectpath):
-    if filename[0]=='.':
-     continue
-    path=subjectpath + '/' + filename 
-    lable=id
-    images.append(cv2.imread(path,0))
-    lables.append(int(lable))
-   id+=1
+ for subdir in os.listdir(fn_dir):
+  if subdir[0]=='.':
+   continue
+  names[id]=subdir
+  colours[id]=(random.randrange(256),random.randrange(256),random.randrange(256))
+  subjectpath=os.path.join(fn_dir, subdir)
+  for filename in os.listdir(subjectpath+'/Faces'):
+   if filename[0]=='.':
+    continue
+   path=subjectpath + '/Faces/' + filename 
+   lable=id
+   images.append(cv2.imread(path,0))
+   lables.append(int(lable))
+  id+=1
 
  im_width=images[0].shape[0]
  im_height=images[0].shape[1]
@@ -48,6 +49,8 @@ def main(model, size, names, colours):
  oldpoints = {}
  opid = 0
  life = 20
+ training={}
+ training[0]=['Noah',20]
  haar_cascade = cv2.CascadeClassifier(haar)
  webcam = cv2.VideoCapture(0)
 
@@ -59,14 +62,20 @@ def main(model, size, names, colours):
   minigray = cv2.resize(gray, (gray.shape[1]/downsize,gray.shape[0]/downsize))
   faces = haar_cascade.detectMultiScale(minigray)
 
+
   faceprediction={}
+  facestorage={}
   for f in faces:
    x,y,w,h=[v*downsize for v in f]
    face=gray[y:y+h, x:x+w]
    face_resize=cv2.resize(face,(im_width, im_height))
-   #if saving:
    prediction=model.predict(face_resize)
    faceprediction[str(f)]=prediction
+   facestorage[str(f)]=face_resize
+
+
+
+  ################################## TIME TRACKING #########################################
   
   todo = [f for f in faces]
   sofar = {}
@@ -108,7 +117,29 @@ def main(model, size, names, colours):
   for op in todel:
    del oldpoints[op]
 
+  ############################## END TIME TRACKING #########################################
 
+
+  ## TRAINING ##
+
+  traininglist=[index for index in training]
+  for index in traininglist:
+   if index not in oldpoints or training[index][1]<1:
+    print('Deleting %s'%training[index][0])
+    del training[index]
+    continue
+   face=facestorage[str(oldpoints[index][0])]
+   path='faces/%s/Faces/'%(training[index][0])
+   pin=sorted([int(n[:n.find('.')]) for n in os.listdir(path)])[-1] + 1
+   path=path + '%s.png'%(pin)
+   print('Saving, name=%s, pin=%s'%(training[index][0], pin))
+   cv2.imwrite(path, face)
+   training[index][1]-=1
+
+
+
+
+  ## NO TRAIN ##
 
 
   for op in oldpoints:
