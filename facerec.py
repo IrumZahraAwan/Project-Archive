@@ -1,6 +1,8 @@
-import cv2,sys,numpy,random,os,math
+import cv2,sys,numpy,random,os,math,select
 
-
+def prompt() :
+ sys.stdout.write('\rCMD: ')
+ sys.stdout.flush()
 
 def trainFisher():
  fn_dir='faces'
@@ -48,14 +50,20 @@ def main(model, size, names, colours):
  first = True
  oldpoints = {}
  opid = 0
- life = 20
+ life = 40
  training={}
- training[0]=['Noah',20]
+ #training[0]=['Noah',20]
  haar_cascade = cv2.CascadeClassifier(haar)
  webcam = cv2.VideoCapture(0)
 
+ prompt()
  
+ time = 0
  while True:
+  time +=1
+  if not time%10:
+   with open('people.txt', 'a+') as f:
+    f.write(str(time) + str(oldpoints) + '\n')
   rval, frame = webcam.read()
   frame=cv2.flip(frame,1,0)
   gray=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -72,6 +80,23 @@ def main(model, size, names, colours):
    prediction=model.predict(face_resize)
    faceprediction[str(f)]=prediction
    facestorage[str(f)]=face_resize
+
+
+
+
+   ########## COMMANDS ###############
+   read, write, errors = select.select([sys.stdin], [], [], 0.001)
+   for cmd in read:
+    cmd = sys.stdin.readline()[:-1]
+    cmd=cmd.split(' ')
+    if cmd[0]=='train':
+     training[int(cmd[1])]=[' '.join(cmd[2:-1]), int(cmd[-1])]
+    if cmd[0]=='exit':
+     return
+    prompt()
+
+
+   ########## END COMM ###############
 
 
 
@@ -126,18 +151,27 @@ def main(model, size, names, colours):
   for index in traininglist:
    if index not in oldpoints or training[index][1]<1:
     print('Deleting %s'%training[index][0])
+    model,(w,h), names, colours = trainFisher()
+    prompt()
     del training[index]
     continue
+   print(training[index][1])
+   prompt()
+   if oldpoints[index][1]<life:
+     continue
    face=facestorage[str(oldpoints[index][0])]
    path='faces/%s/Faces/'%(training[index][0])
-   pin=sorted([int(n[:n.find('.')]) for n in os.listdir(path)])[-1] + 1
+   if not os.path.isdir(path):
+    os.mkdir(path[:-6])
+    os.mkdir(path)
+    pin=1
+   else:
+    pin=sorted([int(n[:n.find('.')]) for n in os.listdir(path) if n[0]!='.' ])[-1] + 1
    path=path + '%s.png'%(pin)
    print('Saving, name=%s, pin=%s'%(training[index][0], pin))
+   prompt()
    cv2.imwrite(path, face)
    training[index][1]-=1
-
-
-
 
   ## NO TRAIN ##
 
@@ -153,7 +187,11 @@ def main(model, size, names, colours):
   if key==27:
    break
 
+import thread
+print('Training...')
 model,(w,h), names, colours = trainFisher()
+print('Training finished.')
 if __name__=='__main__':
+ #thread.start_new(main, (model, (w,h), names, colours))
  main(model, (w,h), names, colours)
 
