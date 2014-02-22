@@ -72,5 +72,5 @@ Now, copy everything in C:\opencv\build\python\x86\2.7\ to C:\Python27\Lib\site-
 Preview
 ------------
 
-![alt tag](http://i.imgur.com/l3l9ie0.png)
+![alt tag](http://i.imgur.com/xNJKID1.png)
 

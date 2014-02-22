@@ -1,4 +1,17 @@
-import cv2,sys,numpy,random,os,math,select
+import cv2,sys,numpy,random,os,math,select,time
+
+
+def savepeople(continuous, names):
+ count=[len(ops) for ops in continuous]
+ avcount = reduce(lambda x, y: x + y + 0.0, count) / len(count) + 0.0
+ ids=set([i for ops in continuous for i in ops])
+ retlist=[]
+ for pid in ids:
+  count=sum( [1 for ops in continuous if pid in ops ] )
+  if count>6:
+   retlist.append(names[pid])
+ with open('people.txt', 'a+') as f:
+  f.write(time.strftime('%X') + ' ' + str(avcount) + ': ' + str(retlist) + '\n')
 
 def prompt() :
  sys.stdout.write('\rCMD: ')
@@ -43,27 +56,28 @@ def trainFisher():
 def distance(newpoint, oldpoint):
     return math.sqrt((newpoint[0] - oldpoint[0])**2 + (newpoint[1] - oldpoint[1])**2)
 
-def main(model, size, names, colours):
+def main(model, size, names, colours, webcam):
  im_width, im_height=size
  haar='haar-face.xml'
  downsize = 4
  first = True
  oldpoints = {}
+ continuous=[]
  opid = 0
  life = 40
  training={}
  #training[0]=['Noah',20]
  haar_cascade = cv2.CascadeClassifier(haar)
- webcam = cv2.VideoCapture(0)
 
  prompt()
  
  time = 0
  while True:
-  time +=1
+  continuous.append([oldpoints[op][2][0] for op in oldpoints])
+  if len(continuous)>10: continuous.pop(0)
   if not time%10:
-   with open('people.txt', 'a+') as f:
-    f.write(str(time) + str(oldpoints) + '\n')
+   savepeople(continuous,names)
+  time+=1
   rval, frame = webcam.read()
   frame=cv2.flip(frame,1,0)
   gray=cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -183,15 +197,14 @@ def main(model, size, names, colours):
    cv2.rectangle(frame, (x,y), (x+w, y+h), colours[prediction[0]], 3)
    cv2.putText(frame, '%s: %s %.0f'%(op, names[prediction[0]], 100*(1500-prediction[1])/1500) + '%', (x-10, y-10), cv2.FONT_HERSHEY_PLAIN, 1, (255-dying,255-dying, dying))
   cv2.imshow("faces", frame)
-  key=cv2.waitKey(10)
+  key=cv2.waitKey(1)
   if key==27:
    break
 
-import thread
-print('Training...')
-model,(w,h), names, colours = trainFisher()
-print('Training finished.')
 if __name__=='__main__':
- #thread.start_new(main, (model, (w,h), names, colours))
- main(model, (w,h), names, colours)
+ print('Training...')
+ model,(w,h), names, colours = trainFisher()
+ print('Training finished.')
+ webcam = cv2.VideoCapture(0)
+ main(model, (w,h), names, colours, webcam)
 

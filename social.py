@@ -1,65 +1,105 @@
-import os, random
+import os, time,select,aiml,sys
 
-names = {}
-colours={}
-id=0
-for subdir in os.listdir('faces'):
- if subdir[0]=='.':
-  continue
- names[id]=subdir
- colours[id]=(random.randrange(256),random.randrange(256),random.randrange(256))
- subjectpath=os.path.join('faces', subdir)
- for filename in os.listdir(subjectpath+'/Faces'):
-  if filename[0]=='.':
-   continue
-  path=subjectpath + '/Faces/' + filename 
-  lable=id
- id+=1
+def prompt() :
+ sys.stdout.write('\r> ')
+ sys.stdout.flush()
 
-last10=[]
-greeted={}
-def newp(people):
- global last10
- global greeted
- last10.append([people[p][-1][0] for p in people])
- if len(last10)>10:
-  last10.pop(0)
- ids=[inner for outer in last10 for inner in outer]
- for people in ids:
-  if people in greeted:
-   greeted[people]=greeted[people]-1
-   print(greeted[people])
-   if greeted[people]<1:
-    del greeted[people]
+
+def speak(response):
+ print(response)
+ os.system('say "%s" '%response)
+
+
+def think(timee, nupeople, listpeeople, comfirm, current, recent):
+
+ for person in listpeople:
+  
+  if person in comfirm:
+   comfirm[person]+=1
+   if comfirm[person]==5:
+    speak('Hello, %s.'%person)
+    current[person]=0
+    del comfirm[person]
+    break
+  elif person in current:
+   current[person]+=1
+  elif person in recent:
+   current[person]=0
+   del recent[person]
   else:
-   inall=True
-   for x in last10:
-    if people not in x:
-     inall=False
-   if inall:
-    greet(people)
-    greeted[people]=10000000
+   comfirm[person]=0
 
-def greet(idn):
- name = names[idn]
- os.system('say "Hello, %s. How are you?" '%name)
- 
- 
+ delete=[]
+ for person in comfirm:
+  if person not in listpeople:
+   comfirm[person]-=2
+   if comfirm[person]<0:
+    delete.append(person)
+ for dl in delete:
+  del comfirm[dl]
 
-i=0
+
+
+ delete=[]
+ for person in current:
+  if person not in listpeople:
+   recent[person]=0
+   delete.append(person)
+ for dl in delete:
+  del current[dl]
+   
+
+
+
+ delete=[]
+ for person in recent:
+  recent[person]+=1
+  if recent[person]>50:
+   delete.append(person)
+ for dl in delete:
+  del recent[dl]
+
+
+ #print(comfirm, current, recent)
+
+ return comfirm, current, recent
+ 
+######### CHAT ########## 
+mia = aiml.Kernel()
+for fil in os.listdir('Alice'):
+ if fil[0]!='.':
+  mia.learn("Alice/%s"%fil)
+for fil in os.listdir('Mia'):
+ if fil[0]!='.':
+  mia.learn("Mia/%s"%fil)
+mia.setBotPredicate("name", "Mia")
+prompt()
+#########################
+
+comfirm={}
+current={}
+recent={}
+listpeople=[]
+
 while True:
- last=0
- if not i%100:
-  with open('people.txt', 'r') as f:
-   people=f.read().split('\n')[-2]
-   timestop = people.find('{')
-   lastt,people=int(people[:timestop]), people[timestop:]
-   if lastt>last:
-    people=people.replace('array(', '')
-    people=people.replace(', dtype=int32)', '')
-    people=eval(people)
-    newp(people)
- i+=1
+ read, write, errors = select.select([sys.stdin], [], [], 0.001)
+ for chat in read:
+  #print(chat)
+  say = sys.stdin.readline()[:-1]
+  response=mia.respond(say, (listpeople+['Sir'])[0])
+  speak(response)
+  prompt()
+ with open('people.txt', 'r') as f:
+  people=f.read().split('\n')
+  if len(people)<2:
+   continue
+  people = people[-2]
+ #21:14:10 2.0: ['Noah Ingham', 'Sophie Ingham']
+ timee=people[:8]
+ nupeople=people[9:12]
+ listpeople=eval(people[14:])
+ comfirm, current, recent = think(timee, nupeople, listpeople, comfirm, current,recent)
+ time.sleep(1)
 
 
- 
+
