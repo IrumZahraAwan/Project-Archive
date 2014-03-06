@@ -56,7 +56,7 @@ Based on many other configs I have seen on the internet.
 
 Using theme.py, I can change the theme for multiple programs in seconds:
 
-![alt text](http://i.imgur.com/JgA8Th9.png)
+![alt text](http://i.imgur.com/tCuR0ue.png)
 
 Using the same colour themes, with different fg/bg colours:
 
