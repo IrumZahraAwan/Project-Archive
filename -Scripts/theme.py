@@ -2,7 +2,7 @@ HOME = '/home/arch'
 import os, sys, colorsys
 import re
 
-from themes.mahat import *
+from themes.newhat import *
 
 #color1=sys.argv[1]
 #color2=sys.argv[2]
@@ -254,4 +254,5 @@ os.system('killall firefox-aurora')
 os.system('xterm -hold -e tty-clock -cs -C %s&' %(int(colorfl[5:])%8))
 os.system('xterm -hold -e ~/-Scripts/colors.sh &')
 os.system('xterm -hold -e archey3 &')
+os.system('xterm -hold -e htop &')
 os.system('firefox-aurora &')

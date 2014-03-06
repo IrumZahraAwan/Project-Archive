@@ -1,12 +1,12 @@
-XTerm*Background: #0b0d22
+XTerm*Background: #0f0f1f
 XTerm*Foreground: #f5f2df
 XTerm*font: 6x10
 XTerm*saveLines: 100000
-XTerm*HiBackColor: #0b0d22
+XTerm*HiBackColor: #0f0f1f
 XTerm*HiForeColor: #f5f2df
 XTerm*geometry: +50+100
 XTerm*allowBoldFonts: false
-*xterm*background: #0b0d22
+*xterm*background: #0f0f1f
 *xterm*foreground: #f5f2df
 *xterm*cursorColor: #f5f2df
 ! Black

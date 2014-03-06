@@ -3,6 +3,7 @@
 set history=700
 "setlocal spell!
 
+
 set undofile
 set undodir=~/.vim/undodir
 
@@ -20,8 +21,8 @@ set cmdheight=2
 
 set expandtab
 set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=1
+set tabstop=1
 "++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -65,9 +66,7 @@ nmap <leader>W :w !sudo tee %<cr>
 
 
 "================== Display =====================
-syntax enable
-
-colorscheme desert
+"colorscheme desert
 set background=dark
 
 "set encoding=utf8
@@ -84,13 +83,12 @@ set ffs=unix,mac,dos
 
 
 set nocompatible
-set tabstop=2 shiftwidth=2 expandtab
 set hlsearch
 syntax on 
 set statusline=%<\ %n:%f\ %m%r%y%=%-35.(line:\ %l\ of\ %L,\ col:\ %c%V\ (%P)%)
 filetype plugin indent on
-set background=dark
-colorscheme desert
+"set background=dark
+"colorscheme desert
 
 
 highlight ColorColumn ctermbg=magenta
@@ -106,7 +104,8 @@ endif
 
 
 "HERE
-highlight LineNr ctermfg=red
-highlight NonText ctermfg=red
+highlight LineNr ctermfg=white
+highlight Comment ctermfg=white
+highlight NonText ctermfg=white
 "REST
 set nu

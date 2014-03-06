@@ -12,7 +12,6 @@ UNDER="\[\033[1;4m\]"    # white
 FLASH="\[\033[1;5m\]"    # white
 ANTI="\[\033[1;7m\]"    # white
 
-
 color0="\033[0;30m"
 color8="\033[1;30m"
 
@@ -42,11 +41,7 @@ noc="\033[0;0m"
 #HERE/
 colorf=${color4}
 colorb=${color7}
-#RESTm"
-BGY="\033[43m"
-BGB="\033[44m"
-BGM="\033[45m"
-BGC="\033[46m"
+#RESTBGC="\033[46m"
 BGW="\033[47m"
 
 function wholelines {
@@ -79,7 +74,7 @@ HISTCONTROL=ignoreboth
 alias bashrc='vim ~/.bashrc && source ~/.bashrc'
 alias ls='ls -la --color'
 alias firefox-aurora='firefox-aurora &'
-alias syn='synergyc -n localhost.local 10.0.1.166'
+alias syn='synergyc -n localhost.local 10.0.1.163'
 
 function sha1 {
     echo -n $1 | openssl sha1
