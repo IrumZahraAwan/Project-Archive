@@ -7,5 +7,6 @@ A collection of projects, scripts and programs that don't deserve their own repo
 Project listing:
 
 1. BF Interpreter
+2. Robotic Arm
 
 More will come as I start looking for old forgotten code.
