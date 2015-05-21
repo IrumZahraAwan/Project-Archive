@@ -8,6 +8,6 @@ The goal of this project was to develop a robotic arm using recycled materials.
 
 ![Alt text](/robotic-arm/design.png?raw=true "CAD Design")
 ![Alt text](/robotic-arm/development.jpg?raw=true "Development Photo")
+![Alt text](/robotic-arm/final.png?raw=true "Final Photo")
 
-
-(No photos of the final operational arm were taken, unfortunately. However, the arm is still at Dickson College.)
+(No close-up photos of the final operational arm were taken. However, the arm is still at Dickson College.
