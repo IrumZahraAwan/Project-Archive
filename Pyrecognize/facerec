@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $# == 0 ] 
+then
+ python facerec.py
+ exit 0
+fi
+
+if [ $1 == 'train' ]
+then
+ python train.py $2
+else
+ echo  "\n\tUsage:  facerec [train name | help]\n"
+fi
+
+
+exit 0

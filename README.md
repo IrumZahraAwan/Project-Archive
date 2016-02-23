@@ -37,6 +37,10 @@ Project listing:
 
 <img src="http://i.imgur.com/mY0jjP7.png" alt="Pydecipher" width="200"/>
 
+* Pyrecognize
+
+<img src="http://i.imgur.com/xNJKID1.png" alt="Pyrecognize" width="200"/>
+
 * Python-Casio-Transpiler
 
 <img src="http://i.imgur.com/yUZrIiv.png" alt="Pydecipher" width="200"/>
