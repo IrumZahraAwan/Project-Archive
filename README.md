@@ -13,6 +13,10 @@ Project listing:
 
 <img src="/Complex-Bases/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg" alt="1+1i" width="200"/>
 
+* Conics
+
+<img src="http://i.imgur.com/TlJuLSm.jpg" alt="Conics" width="200"/>
+
 * DMD Pong
 
 <img src="/dmd-pong/image.jpg" alt="DMD Pong" width="200"/>
