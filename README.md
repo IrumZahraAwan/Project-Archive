@@ -17,6 +17,10 @@ Project listing:
 
 <img src="/dmd-pong/image.jpg" alt="DMD Pong" width="200"/>
 
+* Dotfiles
+
+<img src="http://i.imgur.com/tCuR0ue.png" alt="dotfiles preview" width="200"/>
+
 * IFS-Fractals
 
 <img src="http://i.imgur.com/JhOh1cK.png" alt="DMD Pong" width="200"/>

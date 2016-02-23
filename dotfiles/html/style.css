@@ -1,0 +1,40 @@
+html, body {
+      /*HERE*/
+background-color: #0f0f1f;
+/*REST*/
+      font-weight: normal;
+      margin-left: 7%;
+      height: 95%;
+    }
+    a:link,a:visited,a:active {
+      text-decoration: none;
+      color: #999999;
+      font-weight: normal;
+    }
+    table {
+      font-size: 10pt;
+      border-spacing: 8px;
+    }
+    td {
+      vertical-align: middle;
+    }
+    td:nth-child(2) {
+      font-weight: normal;
+      color: #4C4C4C;
+    }
+    .red {
+      color: #960050;
+    }
+    a:hover {
+      text-decoration: underline;
+      font-weight: normal;
+      /*HERE*/
+color: #3a9495;
+/*REST*/
+    }
+    td:first-child {
+      font-weight: bold;
+      /*HERE*/
+color: #3a9495;
+/*REST*/
+    }
