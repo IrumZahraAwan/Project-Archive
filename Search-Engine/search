@@ -1,0 +1,56 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+# enable debugging
+import cgitb, cgi
+cgitb.enable()
+
+print("Content-Type: text/html\r\n\r\n")
+print('')
+
+with open('html.html', 'r') as f:
+    print(f.read())
+
+form = cgi.FieldStorage()
+oldname = form.getvalue('q')
+if oldname:
+    current = form.getvalue('p')
+    if not current:
+        current=1
+    current = int(current)
+    name = oldname.replace("'", '')
+    name = name.split(' ')
+    import find
+    ordl, dicti = find.look(name)
+    if ordl:
+        for result in ordl[(current-1)*6:current*6]:
+            result = result[0]
+            title = result[4]
+            if len(title) > 58:
+                title = title[:58] + '</a>...<a>'
+            title = ' '.join([word if word.lower() not in name else ('<b>%s</b>' %word) for word in title.split(' ')])
+            print('<a class="rTitle" href="' + result[1] + '">'+title.replace('`', "'") + '</a>')
+            print('<span class="subtle">   -   %s</span><br />' %dicti[result])
+            print('<span class="rLink">'+ result[1] + '</span><br />')
+            descr = ' '.join([word if word.lower() not in name else ('<b>%s</b>' %word) for word in result[5].split(' ')])
+            print('<span class="descr">' + descr.replace('`', "'") + '</span><br />')
+            print('<br />')
+        count = len(ordl)
+        print('<span class="subtle"><br />About %s results (%.2f seconds)</span>' %(count, count/221))
+        dots=False
+        if count > 60:
+            count = 60
+            dots=True
+        pstring='<br /><br /><span class="subtle"> Goto: '
+        for x in range(round((count-(count-1)%6)/6)+1):
+            if x+1 == current:
+                pstring += ('<span style="color:black;">%s  </span>' %(current))
+            else:
+                pstring += '<a class="nextP" href="search?q=%s&p=%s">%s</a>  ' %(oldname, x+1, x+1)
+        if dots:
+            pstring += '...'
+        print(pstring + '</span>')
+    find.sql.close()
+
+
+    print('</div></body></html>')
