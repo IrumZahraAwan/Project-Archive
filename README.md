@@ -6,49 +6,46 @@ A collection of projects, scripts and programs that don't deserve their own repo
 
 Project listing:
 
+* <a href="dmd-pong">DMD Pong
 
-* BF Interpreter
+<img src="/dmd-pong/image.jpg" alt="DMD Pong" width="200"/></a>
 
-* Complex-Bases
+* <a href="robotic-arm">Robot Arm
 
-<img src="/Complex-Bases/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg" alt="1+1i" width="200"/>
+<img src="/robotic-arm/development.jpg" alt="Robot Arm" width="200"/></a>
 
-* Conics
+* <a href="Search-Engine">Search Engine
 
-<img src="http://i.imgur.com/TlJuLSm.jpg" alt="Conics" width="200"/>
+<img src="http://i.imgur.com/hUMIPwQ.png" alt="Pydecipher" width="200"/></a>
 
-* DMD Pong
+* <a href="IFS-Fractals">IFS-Fractals
 
-<img src="/dmd-pong/image.jpg" alt="DMD Pong" width="200"/>
+<img src="http://i.imgur.com/JhOh1cK.png" alt="DMD Pong" width="200"/></a>
 
-* Dotfiles
+* <a href="Complex-Bases">Complex-Bases
 
-<img src="http://i.imgur.com/tCuR0ue.png" alt="dotfiles preview" width="200"/>
+<img src="/Complex-Bases/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg" alt="1+1i" width="200"/><a/>
 
-* IFS-Fractals
+* <a href="pydecipher">pydecipher
 
-<img src="http://i.imgur.com/JhOh1cK.png" alt="DMD Pong" width="200"/>
+<img src="http://i.imgur.com/mY0jjP7.png" alt="Pydecipher" width="200"/></a>
 
-* Robotic Arm
+* <a href="Pyrecognize">Pyrecognize
 
-<img src="/robotic-arm/development.jpg" alt="Robot Arm" width="200"/>
+<img src="http://i.imgur.com/xNJKID1.png" alt="Pyrecognize" width="200"/></a>
 
-* pydecipher
+* <a href="Python-CBasic-Transpiler">Python-Casio-Transpiler
 
-<img src="http://i.imgur.com/mY0jjP7.png" alt="Pydecipher" width="200"/>
+<img src="http://i.imgur.com/yUZrIiv.png" alt="Pydecipher" width="200"/></a>
 
-* Pyrecognize
+* <a href="Conics">Conics
 
-<img src="http://i.imgur.com/xNJKID1.png" alt="Pyrecognize" width="200"/>
+<img src="http://i.imgur.com/TlJuLSm.jpg" alt="Conics" width="200"/></a>
 
-* Python-Casio-Transpiler
+* <a href="dotfiles">Dotfiles
 
-<img src="http://i.imgur.com/yUZrIiv.png" alt="Pydecipher" width="200"/>
+<img src="http://i.imgur.com/tCuR0ue.png" alt="dotfiles preview" width="200"/></a>
 
-* Search Engine (find)
-
-<img src="http://i.imgur.com/hUMIPwQ.png" alt="Pydecipher" width="200"/>
-
-
+* <a href="bf-interpreter">BF Interpreter</a>
 
 More will come as I start looking for old forgotten code.
