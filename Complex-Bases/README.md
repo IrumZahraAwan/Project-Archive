@@ -26,15 +26,15 @@ Continuing this, it will end up looking like:
 
 1+1i
 
-![1+1i](https://raw.githubusercontent.com/noahingham/Complex-Bases/master/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg)
+![1+1i](/Complex-Bases/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg)
 
 
 Some more examples:
 
 2+2i
 
-![2+2i](https://raw.githubusercontent.com/noahingham/Complex-Bases/master/Base%20Representation/Favourites/%3C2.0%20+%202.0i%3E%5B0,8%5E5.0%5D.jpeg)
+![2+2i](/Complex-Bases/Base%20Representation/Favourites/%3C2.0%20+%202.0i%3E%5B0,8%5E5.0%5D.jpeg)
 
 -1.01+1i  (Some rounding is going on here)
 
-![-1.01+1i](https://raw.githubusercontent.com/noahingham/Complex-Bases/master/Base%20Representation/Favourites/%3C-1.01%20+%201.0i%3E%5B0,2%5E17.0%5D.jpeg)
+![-1.01+1i](/Complex-Bases/Base%20Representation/Favourites/%3C-1.01%20+%201.0i%3E%5B0,2%5E17.0%5D.jpeg)

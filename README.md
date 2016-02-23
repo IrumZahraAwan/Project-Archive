@@ -9,10 +9,17 @@ Project listing:
 
 * BF Interpreter
 
+* Complex-Bases
+
+<img src="/Complex-Bases/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg" alt="1+1i" width="200"/>
 
 * DMD Pong
 
 <img src="/dmd-pong/image.jpg" alt="DMD Pong" width="200"/>
+
+* IFS-Fractals
+
+<img src="http://i.imgur.com/JhOh1cK.png" alt="DMD Pong" width="200"/>
 
 * Robotic Arm
 
