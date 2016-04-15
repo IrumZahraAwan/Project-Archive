@@ -32,7 +32,7 @@ Project listing:
 
 * <a href="Pyrecognize">Pyrecognize
 
-<img src="http://i.imgur.com/xNJKID1.png" alt="Pyrecognize" width="200"/></a>
+<img src="https://noahingham.com/img/posts/facerec.png" alt="Pyrecognize" width="200"/></a>
 
 * <a href="Python-CBasic-Transpiler">Python-Casio-Transpiler
 
