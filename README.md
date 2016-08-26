@@ -3,8 +3,23 @@ Small Projects
 
 A collection of projects, scripts and programs that don't deserve their own repos.
 
+Maths projects:
 
-Project listing:
+* <a href="IFS-Fractals">IFS-Fractals
+
+<img src="http://i.imgur.com/JhOh1cK.png" alt="DMD Pong" width="200"/></a>
+
+* <a href="Complex-Bases">Complex-Bases
+
+<img src="/Complex-Bases/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg" alt="1+1i" width="200"/><a/>
+
+* <a href="Conics">Conics (broken)
+
+<img src="http://i.imgur.com/TlJuLSm.jpg" alt="Conics" width="200"/></a>
+
+
+
+CS/IT/Engineering projects:
 
 * <a href="dmd-pong">DMD Pong
 
@@ -18,14 +33,6 @@ Project listing:
 
 <img src="http://i.imgur.com/hUMIPwQ.png" alt="Pydecipher" width="200"/></a>
 
-* <a href="IFS-Fractals">IFS-Fractals
-
-<img src="http://i.imgur.com/JhOh1cK.png" alt="DMD Pong" width="200"/></a>
-
-* <a href="Complex-Bases">Complex-Bases
-
-<img src="/Complex-Bases/Base%20Representation/Favourites/%3C1.0%20+%201.0i%3EZ%202%5E22.jpeg" alt="1+1i" width="200"/><a/>
-
 * <a href="pydecipher">pydecipher
 
 <img src="http://i.imgur.com/mY0jjP7.png" alt="Pydecipher" width="200"/></a>
@@ -37,10 +44,6 @@ Project listing:
 * <a href="Python-CBasic-Transpiler">Python-Casio-Transpiler
 
 <img src="http://i.imgur.com/yUZrIiv.png" alt="Pydecipher" width="200"/></a>
-
-* <a href="Conics">Conics
-
-<img src="http://i.imgur.com/TlJuLSm.jpg" alt="Conics" width="200"/></a>
 
 * <a href="dotfiles">Dotfiles
 
