@@ -32,6 +32,9 @@ Pygame
 OpenCV
 
 
-
-![alt text](http://i.imgur.com/Y1DXdBf.png)
-![alt text](http://i.imgur.com/JhOh1cK.png)
+Web version:
+![Web1](http://i.imgur.com/aGot6vE.png)
+![Web2](http://i.imgur.com/kNU8OEE.png)
+Desktop Version:
+![Desktop1](http://i.imgur.com/Y1DXdBf.png)
+![Desktop2](http://i.imgur.com/JhOh1cK.png)
